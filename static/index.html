@@ -1,1 +1,31 @@
-bruh
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CH4T</title>
+        <style>
+            #messages {
+                height:300px;
+                overflow-y: scroll;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="banner">
+            <h1>CH4T: End2End Encrypted Chat</h1>
+        </div>
+        <div id="chat">
+            <input type="text" name="username" id="username" class="form-control" placeholder="Enter name...">
+            <br>
+            <div class="card">
+                <div id="messages" class="card-block"></div>
+            </div>
+            <br>
+            <textarea id="textarea" name="inputMessage" class="form-control" placeholder="Enter message..."></textarea>
+            <br>
+            <button id="send" class="btn">Send</button>
+        </div>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
