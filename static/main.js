@@ -25,8 +25,8 @@ insertMessage = (messageObj) => {
 
     message.setAttribute('class', 'chat-message')
     console.log("name: " + messageObj.username + " content: " + messageObj.message)
-    message.textContent = `${messageObj.username}: ${messageObj.content}`
+    message.textContent = `${messageObj.username}: ${messageObj.message}`
 
-    message.appendChild(message)
-    messages.insertBefore(message, messages.firstChild)
+    messages.appendChild(message)
+    messages.insert(message, messages.firstChild)
 }
