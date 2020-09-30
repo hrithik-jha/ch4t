@@ -12,6 +12,11 @@ var Clients = make(map[*websocket.Conn]bool)
 var Broadcast = make(chan Message)
 var upgrader = websocket.Upgrader{}
 
+type Message struct {
+	Username string `json:"username"`
+	Message  string `json:"message"`
+}
+
 func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!")
 }
@@ -24,7 +29,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 
 	defer ws.Close()
 
-	clients[ws] = true
+	Clients[ws] = true
 	for {
 		var msg Message
 
@@ -32,7 +37,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 		err := ws.ReadJSON(&msg)
 		if err != nil {
 			log.Printf("Error: %v", err)
-			delete(clients, ws)
+			delete(Clients, ws)
 			break
 		}
 
