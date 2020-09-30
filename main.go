@@ -21,6 +21,23 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!")
 }
 
+func handleMessages() {
+	for {
+		// Acquiring next message
+		msg := <-Broadcast
+
+		// Sending to every client
+		for Client := range Clients {
+			err := Client.WriteJSON(msg)
+			if err != nil {
+				log.Printf("Error: %v", err)
+				Client.Close()
+				delete(Clients, Client)
+			}
+		}
+	}
+}
+
 func handleConnections(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
