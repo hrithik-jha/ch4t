@@ -11,6 +11,15 @@ ws.onmessage = (msg) => {
 };
 
 send.onclick = () => {
+    if(username.value == "") {
+        alert("Enter a username.");
+        return;
+    }
+    else if(input.value == "") {
+        alert("Message body can't be empty.");
+        return;
+    }
+
     const message = {
         username: username.value,
         message: input.value,
