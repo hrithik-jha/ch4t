@@ -11,7 +11,7 @@ import (
 var Clients = make(map[*websocket.Conn]bool)
 var Broadcast = make(chan Message)
 var upgrader = websocket.Upgrader{}
-// Multiple rooms
+// add support for multiple rooms
 
 type Message struct {
 	Username string `json:"username"`
