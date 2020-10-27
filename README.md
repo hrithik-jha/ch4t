@@ -1,2 +1,8 @@
 # `CH4T`
-End-to-end encrypted chat.
+A chatting app in Go using websockets.
+
+## Installing
+`github.com/gorilla/websocket`
+
+## Running
+`go run main.go`
